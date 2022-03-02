@@ -1,9 +1,13 @@
-const { Router } = require('express');
-const UserController = require('./controllers/UserController');
-
-const router = Router();
-
-router.get('/login', UserController.userLogin);
+const express = require('express');
+const usersRoute = express.Router();
+const UserController = require('./controllers/userController');
+// const authMiddleware = require('../middlewares/validateJWT');
 
 
-module.exports = { router };
+usersRoute.get('/', UserController.getAllUsers);
+usersRoute.post('/register', UserController.createUser);
+usersRoute.post('/login', UserController.login);
+
+
+
+module.exports = { usersRoute };
