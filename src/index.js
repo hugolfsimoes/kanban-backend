@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const { router } = require('./routes');
+const { usersRoute } = require('./routes');
+const error = require('./middlewares/error');
 require('dotenv/config');
 
 const PORT = process.env.PORT || 3000;
@@ -8,8 +9,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(router);
-
-
+app.use(usersRoute);
+app.use(error);
 
 app.listen(PORT, () => console.log(`Aplicação rodando na porta ${PORT}`));
