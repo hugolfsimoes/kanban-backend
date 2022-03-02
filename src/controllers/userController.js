@@ -6,10 +6,13 @@ const getAllUsers = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-  const { first_name, last_name, email, password } = req.body;
-
-  const users = await UsersService.createNewUser({ first_name, last_name, email, password });
-  res.status(200).json(users);
+  try {
+    const { first_name, last_name, email, password } = req.body;
+    const users = await UsersService.createNewUser({ first_name, last_name, email, password });
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(error.code).json(error.message);
+  }
 };
 
 const login = async (req, res) => {

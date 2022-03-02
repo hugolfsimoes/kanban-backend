@@ -19,15 +19,14 @@ const createNewUser = async ({ first_name, last_name, email, password }) => {
     await UserValidations.createUserValidation({ first_name, last_name, email, password });
     const passwordHash = crypto.createHash('md5').update(password).digest('hex');
     const result = await UsersModel.createNewUser({ first_name, last_name, email, passwordHash });
-    return result;
-
+    return { code: 200, message: "User registered successfully" };
   } catch (error) {
     console.log(error.message);
+    throw error;
   }
 };
 
 const login = async ({ email, password }) => {
-
   try {
     const user = await UserValidations.loginValidation(email, password);
     user.password = undefined;
