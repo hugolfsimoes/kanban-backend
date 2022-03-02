@@ -1,0 +1,21 @@
+{
+  "name": "kanban-back",
+  "version": "1.0.0",
+  "description": " Um quadro de controle de fluxos. ",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js"
+  },
+  "author": "Hugo Simões",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "pg-promise": "^10.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
